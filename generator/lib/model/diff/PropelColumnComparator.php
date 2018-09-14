@@ -56,7 +56,11 @@ class PropelColumnComparator
         $fromDomain = $fromColumn->getDomain();
         $toDomain = $toColumn->getDomain();
         if ($fromDomain->getType() != $toDomain->getType()) {
+          // HOTFIX: avoid PHP_ARRAY diff error
+          if (!($fromDomain->getType() === 'LONGVARCHAR' && $toDomain->getType() === 'ARRAY'))
+          {
             $changedProperties['type'] = array($fromDomain->getType(), $toDomain->getType());
+          }
         }
         if ($fromDomain->getScale() != $toDomain->getScale()) {
             $changedProperties['scale'] = array($fromDomain->getScale(), $toDomain->getScale());
