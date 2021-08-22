@@ -523,9 +523,9 @@ class ModelCriteria extends Criteria
      *
      * @throws PropelException
      */
-    public function select($columnArray)
+    public function select(string|array $columnArray)
     {
-        if (!count($columnArray) || $columnArray == '') {
+        if ((is_array($columnArray) && !count($columnArray)) || $columnArray == '') {
             throw new PropelException('You must ask for at least one column');
         }
 
