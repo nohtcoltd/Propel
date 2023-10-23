@@ -49,7 +49,7 @@ class PropelOnDemandCollection extends PropelCollection
     /**
      * @return PropelOnDemandIterator
      */
-    public function getIterator()
+    public function getIterator(): Iterator
     {
         return $this->iterator;
     }
@@ -106,7 +106,8 @@ class PropelOnDemandCollection extends PropelCollection
     /**
      * @throws PropelException
      */
-    public function serialize()
+    #[\ReturnTypeWillChange]
+    public function serialize(): never
     {
         throw new PropelException('The On Demand Collection cannot be serialized');
     }
@@ -118,7 +119,8 @@ class PropelOnDemandCollection extends PropelCollection
      *
      * @return void
      */
-    public function unserialize($data)
+    #[\ReturnTypeWillChange]
+    public function unserialize(string $data): never
     {
         throw new PropelException('The On Demand Collection cannot be serialized');
     }

@@ -80,7 +80,11 @@ class Criterion
     public function __construct(Criteria $outer, $column, $value, $comparison = null, $type = null)
     {
         $this->value = $value;
-        $dotPos = strrpos($column, '.');
+        if ($column === null) {
+          $dotPos = false;
+        } else {
+          $dotPos = strrpos($column, '.');
+        }
         if ($dotPos === false || $comparison == Criteria::RAW) {
             // no dot => aliased column
             $this->table = null;
